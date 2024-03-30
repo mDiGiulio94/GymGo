@@ -15,16 +15,16 @@ const CarouselSlide = () => {
         image: "../assets/images/Servizi.jpg",
         label: "Servizi",
       },
-    //   {
-    //     id: 3,
-    //     image: "../assets/images/Allenamenti.jpg",
-    //     label: "Programmi",
-    //   },
-    //   {
-    //     id: 4,
-    //     image: "../assets/images/Promozioni.jpeg",
-    //     label: "Promozioni",
-    //   },
+      {
+        id: 3,
+        image: "../assets/images/Allenamenti.jpg",
+        label: "Programmi",
+      },
+      {
+        id: 4,
+        image: "../assets/images/Promozioni.jpeg",
+        label: "Promozioni",
+      },
     ];
 
 
