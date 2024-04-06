@@ -41,7 +41,9 @@ const Header = () => {
       <header>
         <Navbar expand="lg" className="bg-body-tertiary">
           <Container>
-            <Navbar.Brand href="#home">GymGo</Navbar.Brand>
+            <Link to="/">
+              <Navbar.Brand>GymGo</Navbar.Brand>
+            </Link>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
             {menu.map((elemento, index) => (
@@ -69,8 +71,6 @@ const Header = () => {
                   <Nav.Link id="profilo">
                     <Link to="/Account">{elemento.account}</Link>
                   </Nav.Link>
-
-
                 </Nav>
               </Navbar.Collapse>
             ))}
@@ -90,7 +90,12 @@ const Contenitore = styled.div`
 
   .container {
     margin-left: 10px !important;
+    a {
+      text-decoration: none;
+    }
   }
+
+
 
   .nav-link {
     margin-left: 30px;
