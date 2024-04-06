@@ -1,6 +1,9 @@
+import React from "react";
+import styled from "styled-components";
+
+import ServiziCard from "../components/Card";
 import ServiziApi from "../api/promozioniApi";
 import { useState, useEffect } from "react";
-
 
 /*Gestione chiamata:
 1) Dichiarazione funzione
@@ -12,32 +15,45 @@ import { useState, useEffect } from "react";
 */
 
 const Servizi = () => {
-    const [servizi, setServizi] = useState([]);
+  const [servizi, setServizi] = useState([]);
 
-    async function prendiServizi() {
-        try {
-            const servizi = await ServiziApi.getServizi();
-            setServizi(servizi);
-        } catch (error) {
-            console.log(error)
-        }
+  async function prendiServizi() {
+    try {
+      const servizi = await ServiziApi.getServizi();
+      setServizi(servizi);
+    } catch (error) {
+      console.log(error);
     }
+  }
 
+  useEffect(() => {
+    prendiServizi();
+    console.log("sevizio presi");
+  });
 
-    useEffect(() => {
-        prendiServizi()
-        console.log("sevizio presi")
+  useEffect(() => {
+    if (servizi.length > 0) console.log("risposta corretta");
+    console.log(servizi);
+  }, [servizi]);
+  return (
+    <>
+      <Contenitore>
+        <div className="titolo">
+          <h2>Corsi e Servizi</h2>
+        </div>
+        <ServiziCard servizi={servizi} />
+      </Contenitore>
+    </>
+  );
+};
 
+const Contenitore = styled.div`
+   .titolo{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
 
-    });
-
-    useEffect(() => {
-        if (servizi.length > 0)
-            console.log("risposta corretta")
-        console.log(servizi)
-}, [servizi])
-}
-
-//Chiedi a danilo perché c'è l'useEffect di mount si ripete due volte
+  }
+`;
 
 export default Servizi;
