@@ -48,11 +48,15 @@ const Servizi = () => {
 };
 
 const Contenitore = styled.div`
-   .titolo{
+  .titolo {
     display: flex;
     justify-content: center;
     margin-top: 30px;
+    margin-bottom: 20px;
+  }
 
+  h2 {
+    font-size: 40px;
   }
 `;
 

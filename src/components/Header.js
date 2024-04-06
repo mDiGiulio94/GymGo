@@ -16,7 +16,7 @@ const Header = () => {
       abbonamenti: "Abbonamenti",
       account: (
         <>
-          <AccountCircleIcon /> Account
+          <AccountCircleIcon /> Accedi
         </>
       ),
     },

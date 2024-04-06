@@ -5,7 +5,7 @@ const PROMOZIONI = [
     durata: "1 ora",
     image: "../assets/images/ServiziImg/Aerobica.jpg",
     giorni: ["Lunedi", "Mercoledi", "Venerdi"],
-    fascia_oraria: "19:00 - 20:00 ",
+    fascia_oraria: "09:00 - 20:00 ",
     bottone: "Prenota seduta",
   },
   {
@@ -14,7 +14,7 @@ const PROMOZIONI = [
     durata: " 1 ora",
     image: "../assets/images/ServiziImg/Calisthenics.jpg",
     giorni: ["Lunedi", "Mercoledi", "Venerdi"],
-    fascia_oraria: "18:00 - 19:00 ",
+    fascia_oraria: "13:00 - 20:00 ",
     bottone: "Prenota seduta",
   },
   {
@@ -23,7 +23,7 @@ const PROMOZIONI = [
     durata: "1 ora",
     image: "../assets/images/ServiziImg/Zumba.jpg",
     giorni: ["Martedi", "Giovedi", "Sabato"],
-    fascia_oraria: "08:00 - 09:00 ",
+    fascia_oraria: "08:00 - 20:00 ",
     bottone: "Prenota seduta",
   },
   {
@@ -50,7 +50,7 @@ const PROMOZIONI = [
     durata: "1 ora",
     image: "../assets/images/ServiziImg/Box.jpg",
     giorni: ["Lunedi", "Mercoledi", "Venerdi", "Domenica"],
-    fascia_oraria: "17:00 - 18:00 ",
+    fascia_oraria: "17:00 - 21:00 ",
     bottone: "Prenota seduta",
   },
 ];
