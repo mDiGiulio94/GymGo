@@ -2,15 +2,13 @@ import React from "react";
 import Carousel from "react-bootstrap/Carousel";
 import { Link } from "react-router-dom";
 
-
-
 const CarouselSlide = () => {
   const carouselService = [
     {
       id: 1,
       image: "../assets/images/Segreteria.jpg",
       label: "Segreteria",
-      link: "/Servizi",
+      link: "/Contatti",
     },
     {
       id: 2,
@@ -32,14 +30,12 @@ const CarouselSlide = () => {
     },
   ];
 
-
-
   return carouselService.length <= 1 ? (
     <Carousel indicators={false} controls={false}>
       {carouselService.map((item, index) => (
         <Carousel.Item key={index}>
           <Link to={item.link}>
-            <img className="dim" src={item.image} alt={item.label} />
+           <div className="dim" style={{ backgroundImage: `url(${item.image})` }}/>
           </Link>
           <Carousel.Caption>
             <h3>{item.label}</h3>
@@ -52,7 +48,7 @@ const CarouselSlide = () => {
       {carouselService.map((item, index) => (
         <Carousel.Item key={index}>
           <Link to={item.link}>
-            <img className="dim" src={item.image} alt={item.label} />
+            <div className="dim" style={{ backgroundImage: `url(${item.image})` }}/>
           </Link>
           <Carousel.Caption>
             <h3>{item.label}</h3>
@@ -63,6 +59,4 @@ const CarouselSlide = () => {
   );
 };
 
-
 export default CarouselSlide;
-

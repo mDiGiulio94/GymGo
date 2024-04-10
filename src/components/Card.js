@@ -1,11 +1,12 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
+//Bootstraps
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+
 const ServiziCard = ({ servizi }) => {
-
-
   return (
     <Contenitore>
       {servizi.map((servizio, index) => (
@@ -19,8 +20,9 @@ const ServiziCard = ({ servizi }) => {
             {servizio.giorni.map((giorno, value) => (
               <Card.Text key={value}> {giorno} </Card.Text>
             ))}
-
-                  <Button variant="primary">{servizio.bottone}</Button>
+            <Link to={`/Informazioni/${servizio.nome}/${servizio._id}`}>
+              <Button variant="primary">{servizio.bottone}</Button>
+            </Link>
           </Card.Body>
         </Card>
       ))}
@@ -51,7 +53,8 @@ const Contenitore = styled.div`
       }
       .btn {
         border: none;
-        background-color: rgb(0 0 0 / 65%);
+        background-color: rgb(187 187 135);
+        color: rgb(33 37 41);
         margin-top: 10px;
         width: 80%;
         margin-left: 10%;

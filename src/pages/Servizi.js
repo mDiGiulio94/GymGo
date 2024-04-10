@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "styled-components";
+import { useState, useEffect } from "react";
 
+//Pagine e Componenti
 import ServiziCard from "../components/Card";
 import ServiziApi from "../api/promozioniApi";
-import { useState, useEffect } from "react";
 
 /*Gestione chiamata:
 1) Dichiarazione funzione

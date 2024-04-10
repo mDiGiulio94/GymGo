@@ -23,8 +23,25 @@ async function getServizi (){
 }
 
 
+/*
+chiamata per richiamare un parametro (in questo caso l'id)
+
+nella chiamata è usato un find perché trovato l'id il metodo si fermerà invece che iterare su tutto il contenuto dell'array andato a richiamare come succede invece col find
+*/
+
+async function getDettaglio(id) {
+    try {
+        const dettaglio = await SERVIZI.find(dettagli => dettagli._id === id)
+        return dettaglio
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
 const ServiziApi = {
-    getServizi: getServizi
+    getServizi: getServizi,
+    getDettaglio: getDettaglio
 }
 
 export default ServiziApi;
