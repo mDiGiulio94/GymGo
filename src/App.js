@@ -10,6 +10,7 @@ import Header from "./components/Header";
 //Style
 import "./App.scss";
 import DettagliSeduta from "./pages/DettagliSeduta";
+import Promozioni from "./pages/Promozioni";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/Contatti" element={<Contatti />} />
           <Route path="/Blog" element={<Servizi />} />
           <Route path="/Abbonamenti" element={<Servizi />} />
+          <Route path="/Promozioni" element={<Promozioni />} />
           <Route path="/Account" element={<Servizi />} />
           <Route path="/Informazioni/:nome/:id" element={<DettagliSeduta />} />
         </Routes>

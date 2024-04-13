@@ -10,7 +10,7 @@ const Informazioni = ({ dettaglio }) => {
           // chiedi a danilo perché l'immagine è li ma non la prende nonostante gli altri dati vengano raggiunti tranquillamente
           style={{ backgroundImage: `url(${dettaglio?.image})` }}
           className="img"
-        ></div>
+      />
         <div className="container">
           <div className="head">{dettaglio?.nome}</div>
           <div className="body">{dettaglio?.dettaglio}</div>
@@ -29,16 +29,24 @@ const Informazioni = ({ dettaglio }) => {
 export default Informazioni;
 
 const Contenitore = styled.div`
+
+
+
+.container{
+  /* border: black solid 1px; */
+  margin-top: 10px;
+}
+
   .img {
     width: 100%;
-    height: 300px;
+    height: 500px;
     background-size: cover;
     margin-top: 3px;
     border: solid black 1px;
   }
 
   .head {
-    margin-top: 15px;
+
     margin-bottom: 5px;
     font-size: 30px;
   }
@@ -47,6 +55,7 @@ const Contenitore = styled.div`
     display: flex;
     justify-content: space-between;
     margin-top: 15px;
+    margin-bottom: 5px;
 
     button {
       width: 150px;
@@ -58,7 +67,6 @@ const Contenitore = styled.div`
       color: rgb(33 37 41);
       padding: 3px;
       border-radius: 9px;
-      
     }
 
     button:hover {

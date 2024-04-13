@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 
 //Pagine e Componenti
 import ServiziCard from "../components/Card";
-import ServiziApi from "../api/promozioniApi";
+import ServiziApi from "../api/serviziApi";
 
 /*Gestione chiamata:
 1) Dichiarazione funzione
@@ -58,6 +58,8 @@ const Contenitore = styled.div`
 
   h2 {
     font-size: 40px;
+    font-weight: 600;
+    color: rgb(33 37 41);
   }
 `;
 

@@ -22,6 +22,7 @@ const Header = () => {
           <AccountCircleIcon /> Accedi
         </>
       ),
+      promozioni: "Promozioni"
     },
   ];
 
@@ -71,6 +72,10 @@ const Header = () => {
                     <Link to="/Abbonamenti">{elemento.abbonamenti}</Link>
                   </Nav.Link>
 
+                  <Nav.Link>
+                    <Link to="/Promozioni">{elemento.promozioni}</Link>
+                  </Nav.Link>
+
                   <Nav.Link id="profilo">
                     <Link to="/Account">{elemento.account}</Link>
                   </Nav.Link>
@@ -89,6 +94,7 @@ const Contenitore = styled.div`
     background-color: #eff0d1 !important;
     box-shadow: black 2px 3px 3px;
     margin: 0 !important;
+
   }
 
   .container {

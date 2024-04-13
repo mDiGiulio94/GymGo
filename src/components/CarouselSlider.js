@@ -35,7 +35,8 @@ const CarouselSlide = () => {
       {carouselService.map((item, index) => (
         <Carousel.Item key={index}>
           <Link to={item.link}>
-           <div className="dim" style={{ backgroundImage: `url(${item.image})` }}/>
+            <div className="dim"
+              style={{ backgroundImage: `url(${item.image})` }} />
           </Link>
           <Carousel.Caption>
             <h3>{item.label}</h3>

@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { useParams } from "react-router-dom";
 
 //Api
-import ServiziApi from "../api/promozioniApi";
+import ServiziApi from "../api/serviziApi";
 
 //Pagine
 import Informazioni from "../components/Informazioni";
