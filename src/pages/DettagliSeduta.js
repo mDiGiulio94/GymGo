@@ -8,6 +8,8 @@ import ServiziApi from "../api/serviziApi";
 
 //Pagine
 import Informazioni from "../components/Informazioni";
+import ErrorAlert from "../components/Alert";
+import Spinner from "../components/Spinner";
 
 //funzione
 const DettagliSeduta = () => {
@@ -17,15 +19,30 @@ const DettagliSeduta = () => {
 
     const [dettaglio, setDettaglio] = useState();
 
+    const [load, setLoad] = useState (false)
+
 
     //chiamata asincrona per il richiamo dei dati dall'api
     async function onGetDettaglio() {
         try {
+            setLoad(true)
             //metodo per far si che l'id sia richiamato come numero e non stringa
             const idNumber = Number(id);
             const dettaglio = await ServiziApi.getDettaglio(idNumber)
-            setDettaglio(dettaglio)
-        } catch (error) { console.log(error) }
+            if (dettaglio) {
+//                 setTimeout(() => {
+//                     setDettaglio(dettaglio)
+//                     setLoad(false)
+// }, 30000)
+
+
+                setDettaglio(dettaglio)
+                setLoad(false)
+            } else {
+                setLoad(false)
+           }
+        } catch (error) { console.log(error)
+        setLoad(false) }
     }
 
     //useEffect per il mount
@@ -35,13 +52,15 @@ const DettagliSeduta = () => {
     }, [])
 
     return (
-        //react fragment (serve a contenere un numero X di elementi figlio)
-        <>
-            <Contenitore>
-<Informazioni dettaglio ={dettaglio} />
-            </Contenitore>
-        </>
-    )
+      //react fragment (serve a contenere un numero X di elementi figlio)
+      <>
+        <Contenitore>
+                {dettaglio && <Informazioni dettaglio={dettaglio} />}
+                {!dettaglio && !load && <ErrorAlert />}
+                {load && <Spinner/> }
+        </Contenitore>
+      </>
+    );
 };
 
 
