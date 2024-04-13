@@ -1,9 +1,24 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 //
 
 const dettaglioPromozioni = ({ promozioni }) => {
+  // funzione per ridurre la descrizione
+  const Riduci = (informazioni) => {
+    //dichirazione indice numerico al quale volgioamo ridurre la descrizione
+    const massimaLung = 600;
+    //condizione che permette di accorciare il teso
+    if (informazioni.length >= massimaLung) {
+      return massimaLung;
+    } else {
+      //impostare la riduzione all'ultimo spazio vuoto
+      const ultimoSpazio = informazioni.lastIndexof(" ", massimaLung);
+      return ultimoSpazio;
+    }
+  };
+
   return (
     <>
       <Contenitore>
@@ -16,10 +31,19 @@ const dettaglioPromozioni = ({ promozioni }) => {
             </div>
             <div className="titolo">
               <span>{promozione.periodo}</span>
-              <span>{promozione.descrizione}</span>
+              <span>
+                {promozione.descrizione.slice(
+                  " ",
+                  Riduci(promozione.descrizione)
+                )}
+                ...
+              </span>
               <span>{promozione.tipo}</span>
               <span>{promozione.annuale}</span>
-              <button>{promozione.bottone}</button>
+
+              <Link to={`/PromozioneScelta/${promozione.periodo}/${promozione.id}`}>
+                <button>{promozione.bottone}</button>
+              </Link>
             </div>
           </div>
         ))}
@@ -62,8 +86,7 @@ const Contenitore = styled.div`
       margin: 1%;
     }
     button {
-
-        margin-top: 5%;
+      margin-top: 5%;
       text-align: center;
       font-weight: 600;
       font-size: 17px;
@@ -71,6 +94,7 @@ const Contenitore = styled.div`
       color: rgb(33 37 41);
       padding: 3px;
       border-radius: 9px;
+      width: 100%;
     }
 
     button:hover {

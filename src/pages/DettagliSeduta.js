@@ -12,8 +12,9 @@ import Informazioni from "../components/Informazioni";
 //funzione
 const DettagliSeduta = () => {
 
-
+//hook di react-rooter-dom che permette di accedere ai parametri passati dal percorso URL, facendo in modo di restituire l'OGGETTO a cui corrisponde il valore id
     const { id } = useParams();
+
     const [dettaglio, setDettaglio] = useState();
 
 

@@ -24,17 +24,39 @@ const Promozioni = () => {
     console.log("promozioni prese");
   },[]);
 
+useEffect(() => {
+  if (promozioni.length > 1) console.log("hai ricevuto le ricette dal server");
+  console.log(promozioni);
+}, [promozioni]);
+
 
 
   return (
     <>
       <Contenitore>
-        <DettaglioPromozioni promozioni={promozioni} />
+        <div className="titolo">
+          <h2>Promozioni Disponibili</h2>
+          <DettaglioPromozioni promozioni={promozioni} />
+        </div>
       </Contenitore>
     </>
   );
 };
 
-const Contenitore = styled.div``;
+const Contenitore = styled.div`
+  .titolo {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    font-size: 40px;
+    font-weight: 600;
+    color: rgb(33 37 41);
+    text-align: center;
+  }
+`;
 
 export default Promozioni;

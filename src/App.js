@@ -11,6 +11,8 @@ import Header from "./components/Header";
 import "./App.scss";
 import DettagliSeduta from "./pages/DettagliSeduta";
 import Promozioni from "./pages/Promozioni";
+import PromozioneScelta from "./components/PromozioneScelta";
+import Promozione from "./pages/Promozione";
 
 function App() {
   return (
@@ -27,6 +29,7 @@ function App() {
           <Route path="/Promozioni" element={<Promozioni />} />
           <Route path="/Account" element={<Servizi />} />
           <Route path="/Informazioni/:nome/:id" element={<DettagliSeduta />} />
+          <Route path="/PromozioneScelta/:periodo/:id" element={<Promozione /> }/>
         </Routes>
       </Router>
     </>

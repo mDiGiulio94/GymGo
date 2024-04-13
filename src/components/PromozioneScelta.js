@@ -2,22 +2,25 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-const Informazioni = ({ dettaglio }) => {
+const PromozioneScelta = ({ promo }) => {
   return (
     <>
       <Contenitore>
         <div
-
-          style={{ backgroundImage: `url(${dettaglio?.image})` }}
+          style={{ backgroundImage: `url(${promo?.sconto})` }}
           className="img"
-      />
+        />
         <div className="container">
-          <div className="head">{dettaglio?.nome}</div>
-          <div className="body">{dettaglio?.dettaglio}</div>
+          <div className="head">{promo?.tipo}</div>
+          <div className="body">
+            <span>{promo?.descrizione}</span>
+            <span>{promo?.periodo}</span>
+            <span>{promo?.annuale}</span>
+          </div>
           <div className="footer">
-            <button>{dettaglio?.bottone1}</button>
-            <Link to="/Servizi">
-              <button>{dettaglio?.bottone2}</button>
+            <button>{promo?.bottone1}</button>
+            <Link to="/Promozioni">
+              <button>{promo?.bottone2}</button>
             </Link>
           </div>
         </div>
@@ -26,27 +29,30 @@ const Informazioni = ({ dettaglio }) => {
   );
 };
 
-export default Informazioni;
-
 const Contenitore = styled.div`
-
-
-
-.container{
-  /* border: black solid 1px; */
-  margin-top: 10px;
-}
+  .container {
+    /* border: black solid 1px; */
+    margin-top: 10px;
+  }
 
   .img {
     width: 100%;
     height: 500px;
     background-size: cover;
-    margin-top: 3px;
+    margin-top: 0.3%;
     border: solid black 1px;
   }
 
-  .head {
+  .body {
+    display: flex;
+    flex-direction: column;
 
+    span {
+      margin-top: 1%;
+    }
+  }
+
+  .head {
     margin-bottom: 5px;
     font-size: 30px;
   }
@@ -58,7 +64,7 @@ const Contenitore = styled.div`
     margin-bottom: 5px;
 
     button {
-      width: 150px;
+      width: 300px;
       height: 100%;
       text-align: center;
       font-weight: 600;
@@ -73,7 +79,8 @@ const Contenitore = styled.div`
       color: rgba(236, 236, 15, 0.904);
       transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
         border-color 0.15s ease-in-out;
-
     }
   }
 `;
+
+export default PromozioneScelta;
