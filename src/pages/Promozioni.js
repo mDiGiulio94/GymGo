@@ -5,15 +5,31 @@ import styled from "styled-components";
 import PromozioniApi from "../api/promozioniApi";
 import DettaglioPromozioni from "../components/dettaglioPromozioni";
 
+//Componenti
+import Spinner from "../components/Spinner";
+
 //funzione pagina promozioni
 const Promozioni = () => {
   const [promozioni, setPromozioni] = useState([]);
+  const [load, setLoad] = useState(false)
 
   async function prendiPromozioni() {
     try {
+      setLoad(true)
       const promozioni = await PromozioniApi.getPromozioni();
-      setPromozioni(promozioni);
+      if (promozioni) {
+        // setTimeout(() => {
+        //      setPromozioni(promozioni);
+        //      setLoad(false);
+        // }, 30000)
+
+        setPromozioni(promozioni);
+        setLoad(false)
+      } else {
+        setLoad(false)
+      }
     } catch (error) {
+    setLoad(false)
       console.log(error);
     }
   }
@@ -33,12 +49,16 @@ useEffect(() => {
 
   return (
     <>
-      <Contenitore>
-        <div className="titolo">
-          <h2>Promozioni Disponibili</h2>
-          <DettaglioPromozioni promozioni={promozioni} />
-        </div>
-      </Contenitore>
+      {promozioni && (
+        <Contenitore>
+          <div className="titolo">
+            <h2>Promozioni Disponibili</h2>
+            <DettaglioPromozioni promozioni={promozioni} />
+          </div>
+        </Contenitore>
+      )}
+
+      {load && (<Spinner />)}
     </>
   );
 };

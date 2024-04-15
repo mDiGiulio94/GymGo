@@ -29,6 +29,9 @@ function ErrorAlert() {
 
 }
 
+
+
+
 const Contenitore = styled.div`
   .fade {
     width: 50%;
@@ -70,4 +73,11 @@ const Contenitore = styled.div`
   }
 `;
 
-export default ErrorAlert;
+const Alerts = {
+
+  ErrorAlert: ErrorAlert,
+
+
+}
+
+export default Alerts;

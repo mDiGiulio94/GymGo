@@ -9,7 +9,7 @@ import PromozioniApi from "../api/promozioniApi";
 
 //component
 import PromozioneScelta from "../components/PromozioneScelta";
-import ErrorAlert from "../components/Alert";
+import Alerts from "../components/Alert";
 import Spinner from "../components/Spinner";
 
 
@@ -31,13 +31,13 @@ const Promozione = () => {
       const idNumber = Number(id);
       const promo = await PromozioniApi.getPromozione(idNumber);
       if (promo) {
-        // setTimeout(() => {
-        //   setPromo(promo);
-        //   setLoad(false);
-        // }, 300000);
+        setTimeout(() => {
+          setPromo(promo);
+          setLoad(false);
+        }, 3000);
 
-        setPromo(promo);
-        setLoad(false);
+        // setPromo(promo);
+        // setLoad(false);
       } else {
         setLoad(false);
       }
@@ -57,7 +57,7 @@ const Promozione = () => {
     <>
       <Contenitore>
         {promo && <PromozioneScelta promo={promo} />}
-        {!promo && !load && <ErrorAlert />}
+        {!promo && !load && <Alerts.ErrorAlert />}
 
         {load && (  <Spinner />
         )}

@@ -8,7 +8,7 @@ import ServiziApi from "../api/serviziApi";
 
 //Pagine
 import Informazioni from "../components/Informazioni";
-import ErrorAlert from "../components/Alert";
+import Alerts from "../components/Alert";
 import Spinner from "../components/Spinner";
 
 //funzione
@@ -30,14 +30,14 @@ const DettagliSeduta = () => {
             const idNumber = Number(id);
             const dettaglio = await ServiziApi.getDettaglio(idNumber)
             if (dettaglio) {
-//                 setTimeout(() => {
-//                     setDettaglio(dettaglio)
-//                     setLoad(false)
-// }, 30000)
+                setTimeout(() => {
+                    setDettaglio(dettaglio)
+                    setLoad(false)
+}, 3000)
 
 
-                setDettaglio(dettaglio)
-                setLoad(false)
+                // setDettaglio(dettaglio)
+                // setLoad(false)
             } else {
                 setLoad(false)
            }
@@ -56,7 +56,7 @@ const DettagliSeduta = () => {
       <>
         <Contenitore>
                 {dettaglio && <Informazioni dettaglio={dettaglio} />}
-                {!dettaglio && !load && <ErrorAlert />}
+                {!dettaglio && !load && <Alerts.ErrorAlert />}
                 {load && <Spinner/> }
         </Contenitore>
       </>

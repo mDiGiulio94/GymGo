@@ -2,9 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-//
+//componente
 
-const dettaglioPromozioni = ({ promozioni }) => {
+
+
+const DettaglioPromozioni = ({ promozioni, onPromozioneRicevuta, pag }) => {
+
+
+
   // funzione per ridurre la descrizione
   const Riduci = (informazioni) => {
     //dichirazione indice numerico al quale volgioamo ridurre la descrizione
@@ -18,6 +23,13 @@ const dettaglioPromozioni = ({ promozioni }) => {
       return ultimoSpazio;
     }
   };
+
+  //funzione di call back per inviare dati da componente figlio a  padre
+  function inviaPromozione(periodo) {
+    if(pag === "home"){}
+  onPromozioneRicevuta(periodo)
+}
+
 
   return (
     <>
@@ -42,7 +54,7 @@ const dettaglioPromozioni = ({ promozioni }) => {
               <span>{promozione.annuale}</span>
 
               <Link to={`/PromozioneScelta/${promozione.periodo}/${promozione.id}`}>
-                <button>{promozione.bottone}</button>
+                <button> {promozione.bottone}</button>
               </Link>
             </div>
           </div>
@@ -105,4 +117,4 @@ const Contenitore = styled.div`
   }
 `;
 
-export default dettaglioPromozioni;
+export default DettaglioPromozioni;

@@ -6,7 +6,7 @@ const Spinner = () => {
       <>
         <Contenitore>
           <div className="container-spinner">
-            <div className="spinner-border text-danger" role="status">
+            <div className="spinner-border " role="status">
               <span className="visually-hidden">Loading...</span>
             </div>
           </div>
@@ -30,6 +30,7 @@ const Contenitore = styled.div`
     width: 100px;
     height: 100px;
     font-size: 50px;
+    color: #0e6BA8;
   }
 `;
 
