@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 
 
-const DettaglioPromozioni = ({ promozioni, onPromozioneRicevuta, pag }) => {
+const DettaglioPromozioni = ({ promozioni, onPromozioneRicevuta}) => {
 
 
 
@@ -26,7 +26,6 @@ const DettaglioPromozioni = ({ promozioni, onPromozioneRicevuta, pag }) => {
 
   //funzione di call back per inviare dati da componente figlio a  padre
   function inviaPromozione(periodo) {
-    if(pag === "home"){}
   onPromozioneRicevuta(periodo)
 }
 

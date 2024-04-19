@@ -1,33 +1,52 @@
-import { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 import Alert from "react-bootstrap/Alert";
 
 
-function ErrorAlert() {
-  const [show, setShow] = useState(true);
+function ErrorAlert(pag) {
 
-  if (show) {
-    return (
+  return (
+    <>
+      {pag === "promozionescelta" && (
       <>
         <Contenitore>
-          <Alert  onClose={() => setShow(false)}>
+          <Alert>
             <Alert.Heading>
               Attenzione! La pagina cercata non esiste!
             </Alert.Heading>
             <Link to="/Promozioni">
               <div className="container">
-                            <button>Torna Indietro</button>
+                <button>Torna Indietro</button>
               </div>
             </Link>
           </Alert>
         </Contenitore>
       </>
-    );
-  }
+  )}
+
+      {pag === "informazioni" && (<>
+        <Contenitore>
+          <Alert>
+            <Alert.Heading>
+              Attenzione! La pagina cercata non esiste!
+            </Alert.Heading>
+            <Link to="/Abbonamenti">
+              <div className="container">
+                <button>Torna Indietro</button>
+              </div>
+            </Link>
+          </Alert>
+        </Contenitore>
+      </>)}
+
+
+    </>
+  )
+
 
 }
+
 
 
 
@@ -73,11 +92,8 @@ const Contenitore = styled.div`
   }
 `;
 
-const Alerts = {
-
-  ErrorAlert: ErrorAlert,
 
 
-}
 
-export default Alerts;
+
+export default ErrorAlert;

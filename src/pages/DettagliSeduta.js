@@ -8,7 +8,7 @@ import ServiziApi from "../api/serviziApi";
 
 //Pagine
 import Informazioni from "../components/Informazioni";
-import Alerts from "../components/Alert";
+import ErrorAlert from "../components/Alert";
 import Spinner from "../components/Spinner";
 
 //funzione
@@ -36,8 +36,8 @@ const DettagliSeduta = () => {
 }, 3000)
 
 
-                // setDettaglio(dettaglio)
-                // setLoad(false)
+                setDettaglio(dettaglio)
+                setLoad(false)
             } else {
                 setLoad(false)
            }
@@ -55,9 +55,9 @@ const DettagliSeduta = () => {
       //react fragment (serve a contenere un numero X di elementi figlio)
       <>
         <Contenitore>
-                {dettaglio && <Informazioni dettaglio={dettaglio} />}
-                {!dettaglio && !load && <Alerts.ErrorAlert />}
-                {load && <Spinner/> }
+          {dettaglio && <Informazioni dettaglio={dettaglio} />}
+          {!dettaglio && !load && <ErrorAlert pag="promozionescelta" />}
+          {load && <Spinner />}
         </Contenitore>
       </>
     );

@@ -9,7 +9,7 @@ import PromozioniApi from "../api/promozioniApi";
 
 //component
 import PromozioneScelta from "../components/PromozioneScelta";
-import Alerts from "../components/Alert";
+import ErrorAlert from "../components/Alert";
 import Spinner from "../components/Spinner";
 
 
@@ -57,10 +57,9 @@ const Promozione = () => {
     <>
       <Contenitore>
         {promo && <PromozioneScelta promo={promo} />}
-        {!promo && !load && <Alerts.ErrorAlert />}
+        {!promo && !load && <ErrorAlert pag="informazioni" />}
 
-        {load && (  <Spinner />
-        )}
+        {load && <Spinner />}
       </Contenitore>
     </>
   );
