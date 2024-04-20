@@ -2,29 +2,57 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-const PromozioneScelta = ({ promo }) => {
+const PromozioneScelta = ({ promo, pag }) => {
   return (
     <>
-      <Contenitore>
-        <div
-          style={{ backgroundImage: `url(${promo?.sconto})` }}
-          className="img"
-        />
-        <div className="container">
-          <div className="head">{promo?.tipo}</div>
-          <div className="body">
-            <span>{promo?.descrizione}</span>
-            <span>{promo?.periodo}</span>
-            <span>{promo?.annuale}</span>
+      {pag === "informazioni" && (
+        <>
+          <Contenitore>
+            <div
+              style={{ backgroundImage: `url(${promo?.sconto})` }}
+              className="img"
+            />
+            <div className="container">
+              <div className="head">{promo?.tipo}</div>
+              <div className="body">
+                <span>{promo?.descrizione}</span>
+                <span>{promo?.periodo}</span>
+                <span>{promo?.annuale}</span>
+              </div>
+              <div className="footer">
+                <button>{promo?.bottone1}</button>
+                <Link to="/Promozioni">
+                  <button>{promo?.bottone2}</button>
+                </Link>
+              </div>
+            </div>
+          </Contenitore>
+        </>
+      )}
+
+      {pag === "home" && (
+        <>
+        <Contenitore>
+          <div
+            style={{ backgroundImage: `url(${promo?.sconto})` }}
+            className="img"
+          />
+          <div className="container">
+            <div className="head">{promo?.tipo}</div>
+            <div className="body">
+              <span>{promo?.descrizione}</span>
+              <span>{promo?.periodo}</span>
+              <span>{promo?.annuale}</span>
+            </div>
+            <div className="footer">
+              <button>{promo?.bottone1}</button>
+              <Link to="/Home">
+                <button>{promo?.bottone2}</button>
+              </Link>
+            </div>
           </div>
-          <div className="footer">
-            <button>{promo?.bottone1}</button>
-            <Link to="/Promozioni">
-              <button>{promo?.bottone2}</button>
-            </Link>
-          </div>
-        </div>
-      </Contenitore>
+        </Contenitore>
+     </> )}
     </>
   );
 };

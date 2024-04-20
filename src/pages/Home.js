@@ -42,7 +42,7 @@ function Home() {
     <>
 
       <CarouselSlide />
-      <DettaglioPromozioni promozioni={ promozioni} onPromozioneRicevuta={riceviDati}/>
+      <DettaglioPromozioni promozioni={ promozioni} onPromozioneRicevuta={riceviDati} />
     </>
   );
 }

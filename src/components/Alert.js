@@ -9,40 +9,42 @@ function ErrorAlert(pag) {
   return (
     <>
       {pag === "promozionescelta" && (
-      <>
-        <Contenitore>
-          <Alert>
-            <Alert.Heading>
-              Attenzione! La pagina cercata non esiste!
-            </Alert.Heading>
-            <Link to="/Promozioni">
-              <div className="container">
-                <button>Torna Indietro</button>
-              </div>
-            </Link>
-          </Alert>
-        </Contenitore>
-      </>
-  )}
+        <>
+          <Contenitore>
+            <Alert>
+              <Alert.Heading>
+                Attenzione! La pagina cercata non esiste!
+              </Alert.Heading>
+              <Link to="/Promozioni">
+                <div className="container">
+                  <button>Torna Indietro</button>
+                </div>
+              </Link>
+            </Alert>
+          </Contenitore>
+        </>
+      )}
 
-      {pag === "informazioni" && (<>
-        <Contenitore>
-          <Alert>
-            <Alert.Heading>
-              Attenzione! La pagina cercata non esiste!
-            </Alert.Heading>
-            <Link to="/Abbonamenti">
-              <div className="container">
-                <button>Torna Indietro</button>
-              </div>
-            </Link>
-          </Alert>
-        </Contenitore>
-      </>)}
+      {pag === "informazioni" && (
+        <>
+          <Contenitore>
+            <Alert>
+              <Alert.Heading>
+                Attenzione! La pagina cercata non esiste!
+              </Alert.Heading>
+              <Link to="/Abbonamenti">
+                <div className="container">
+                  <button>Torna Indietro</button>
+                </div>
+              </Link>
+            </Alert>
+          </Contenitore>
+        </>
+      )}
 
 
     </>
-  )
+  );
 
 
 }

@@ -56,7 +56,7 @@ const Promozione = () => {
   return (
     <>
       <Contenitore>
-        {promo && <PromozioneScelta promo={promo} />}
+        {promo && <PromozioneScelta promo={promo} pag="informazioni"/>}
         {!promo && !load && <ErrorAlert pag="informazioni" />}
 
         {load && <Spinner />}

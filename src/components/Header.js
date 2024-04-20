@@ -77,7 +77,7 @@ const Header = () => {
                   </Nav.Link>
 
                   <Nav.Link id="profilo">
-                    <Link to="/Account">{elemento.account}</Link>
+                    <Link to="/Login">{elemento.account}</Link>
                   </Nav.Link>
                 </Nav>
               </Navbar.Collapse>
