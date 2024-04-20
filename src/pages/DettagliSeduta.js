@@ -55,8 +55,8 @@ const DettagliSeduta = () => {
       //react fragment (serve a contenere un numero X di elementi figlio)
       <>
         <Contenitore>
-          {dettaglio && <Informazioni dettaglio={dettaglio} />}
-          {!dettaglio && !load && <ErrorAlert pag="promozionescelta" />}
+          {dettaglio && <Informazioni dettaglio={dettaglio}  />}
+          {!dettaglio && !load && <ErrorAlert pag="servizioMancante" />}
           {load && <Spinner />}
         </Contenitore>
       </>

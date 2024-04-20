@@ -13,7 +13,7 @@ import ErrorAlert from "../components/Alert";
 import Spinner from "../components/Spinner";
 
 
-const Promozione = () => {
+const Promozione = ()  => {
   //hook di react-rooter-dom che permette di accedere ai parametri passati dal percorso URL, facendo in modo di restituire l'OGGETTO a cui corrisponde il valore id
   const { id } = useParams();
 
@@ -56,8 +56,8 @@ const Promozione = () => {
   return (
     <>
       <Contenitore>
-        {promo && <PromozioneScelta promo={promo} pag="informazioni"/>}
-        {!promo && !load && <ErrorAlert pag="informazioni" />}
+        {promo && <PromozioneScelta promo={promo} pag="info"  />}
+        {!promo && !load && <ErrorAlert pag="promozioneMancante" />}
 
         {load && <Spinner />}
       </Contenitore>

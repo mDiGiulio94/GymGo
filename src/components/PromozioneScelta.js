@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const PromozioneScelta = ({ promo, pag }) => {
   return (
     <>
-      {pag === "informazioni" && (
+      {pag === "info" && (
         <>
           <Contenitore>
             <div

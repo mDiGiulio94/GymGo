@@ -4,45 +4,45 @@ import { Link } from "react-router-dom";
 import Alert from "react-bootstrap/Alert";
 
 
-function ErrorAlert(pag) {
+function ErrorAlert({pag}) {
 
   return (
     <>
-      {pag === "promozionescelta" && (
-        <>
+      {pag ===
+        "promozioneMancante" && (
           <Contenitore>
-            <Alert>
-              <Alert.Heading>
-                Attenzione! La pagina cercata non esiste!
-              </Alert.Heading>
-              <Link to="/Promozioni">
-                <div className="container">
-                  <button>Torna Indietro</button>
-                </div>
-              </Link>
-            </Alert>
+            <div>
+              <Alert>
+                <Alert.Heading>
+                  Attenzione! La pagina cercata non esiste!
+                </Alert.Heading>
+                <Link to="/Promozioni">
+                  <div className="container">
+                    <button>Torna Indietro</button>
+                  </div>
+                </Link>
+              </Alert>
+            </div>
           </Contenitore>
-        </>
-      )}
+        )}
 
-      {pag === "informazioni" && (
-        <>
+      {pag ===
+        "servizioMancante" && (
           <Contenitore>
-            <Alert>
-              <Alert.Heading>
-                Attenzione! La pagina cercata non esiste!
-              </Alert.Heading>
-              <Link to="/Abbonamenti">
-                <div className="container">
-                  <button>Torna Indietro</button>
-                </div>
-              </Link>
-            </Alert>
+            <div>
+              <Alert>
+                <Alert.Heading>
+                  Attenzione! La pagina cercata non esiste!
+                </Alert.Heading>
+                <Link to="/Servizi">
+                  <div className="container">
+                    <button>Torna Indietro</button>
+                  </div>
+                </Link>
+              </Alert>
+            </div>
           </Contenitore>
-        </>
-      )}
-
-
+        )}
     </>
   );
 
@@ -61,6 +61,7 @@ const Contenitore = styled.div`
     color: rgb(33 37 41);
     background-color: rgb(227 12 12 / 95%);
     border-radius: 9px;
+    margin-bottom: 20%;
 
     .alert-heading {
       text-align: center;
@@ -92,6 +93,7 @@ const Contenitore = styled.div`
       text-decoration: none;
     }
   }
+
 `;
 
 

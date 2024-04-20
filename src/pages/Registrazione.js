@@ -439,11 +439,12 @@ const Contenitore = styled.div`
       }
       .invia {
         border-radius: 5px;
-        height: 100%;
         font-size: 17px;
         font-weight: 600;
         background-color: rgb(187 187 135);
         color: rgb(33 37 41);
+        height: 100%;
+        width: 80%
       }
 
       .invia:hover {
