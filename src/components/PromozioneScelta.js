@@ -89,7 +89,7 @@ const Contenitore = styled.div`
     display: flex;
     justify-content: space-between;
     margin-top: 15px;
-    margin-bottom: 5px;
+    margin-bottom: 3%;
 
     button {
       width: 300px;
@@ -101,6 +101,7 @@ const Contenitore = styled.div`
       color: rgb(33 37 41);
       padding: 3px;
       border-radius: 9px;
+
     }
 
     button:hover {

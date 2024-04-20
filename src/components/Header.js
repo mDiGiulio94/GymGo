@@ -2,10 +2,12 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
+
 //Bootstrap
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import { NavDropdown } from "react-bootstrap";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 
@@ -19,10 +21,11 @@ const Header = () => {
       abbonamenti: "Abbonamenti",
       account: (
         <>
-          <AccountCircleIcon /> Accedi
+          Login <AccountCircleIcon />
         </>
       ),
-      promozioni: "Promozioni"
+      registrati: "Registrazione",
+      promozioni: "Promozioni",
     },
   ];
 
@@ -54,31 +57,60 @@ const Header = () => {
               <Navbar.Collapse id="basic-navbar-nav" key={index}>
                 <Nav className="me-auto">
                   <Nav.Link>
-                    <Link to="/">{elemento.home}</Link>
+                    <Link className="giallo" to="/">
+                      {elemento.home}
+                    </Link>
                   </Nav.Link>
                   <Nav.Link>
-                    <Link to="/Servizi">{elemento.servizi}</Link>
+                    <Link className="giallo" to="/Servizi">
+                      {elemento.servizi}
+                    </Link>
                   </Nav.Link>
 
                   <Nav.Link>
-                    <Link to="/Contatti">{elemento.contatti}</Link>
+                    <Link className="giallo" to="/Contatti">
+                      {elemento.contatti}
+                    </Link>
                   </Nav.Link>
 
                   <Nav.Link>
-                    <Link to="/Blog">{elemento.blog}</Link>
+                    <Link className="giallo" to="/Blog">
+                      {elemento.blog}
+                    </Link>
                   </Nav.Link>
 
                   <Nav.Link>
-                    <Link to="/Abbonamenti">{elemento.abbonamenti}</Link>
+                    <Link className="giallo" to="/Abbonamenti">
+                      {elemento.abbonamenti}
+                    </Link>
                   </Nav.Link>
 
                   <Nav.Link>
-                    <Link to="/Promozioni">{elemento.promozioni}</Link>
+                    <Link className="giallo" to="/Promozioni">
+                      {elemento.promozioni}
+                    </Link>
                   </Nav.Link>
 
-                  <Nav.Link id="profilo">
-                    <Link to="/Login">{elemento.account}</Link>
-                  </Nav.Link>
+                  <NavDropdown
+                    title="Opzioni di accesso"
+                    id="basic-nav-dropdown"
+                  >
+                    <NavDropdown.Item>
+                      <Nav.Link className="profilo">
+                        <Link to="/Registrazione">
+                          Nuovo cliente? Prosegui qui: {elemento.registrati}
+                        </Link>
+                      </Nav.Link>
+                    </NavDropdown.Item>
+
+                    <NavDropdown.Item>
+                      <Nav.Link className="profilo">
+                        <Link to="/Login">
+                          Sei già iscritto? Effettua il {elemento.account}
+                        </Link>
+                      </Nav.Link>
+                    </NavDropdown.Item>
+                  </NavDropdown>
                 </Nav>
               </Navbar.Collapse>
             ))}
@@ -94,7 +126,6 @@ const Contenitore = styled.div`
     background-color: #eff0d1 !important;
     box-shadow: black 2px 3px 3px;
     margin: 0 !important;
-
   }
 
   .container {
@@ -104,8 +135,6 @@ const Contenitore = styled.div`
     }
   }
 
-
-
   .nav-link {
     margin-left: 30px;
     a {
@@ -114,7 +143,25 @@ const Contenitore = styled.div`
     }
   }
 
-  .nav-link a:hover {
+  .giallo:hover {
+    color: rgba(236, 236, 15, 0.904) !important;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+      border-color 0.15s ease-in-out;
+  }
+
+  .dropdown-menu.show {
+    margin-left: 20%;
+
+    a {
+      font-weight: 600;
+      font-size: 13px;
+    }
+    .profilo {
+      margin-left: 0;
+    }
+  }
+
+  #basic-nav-dropdown:hover {
     color: rgba(236, 236, 15, 0.904) !important;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
       border-color 0.15s ease-in-out;

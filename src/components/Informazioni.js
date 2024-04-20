@@ -56,6 +56,7 @@ const Contenitore = styled.div`
     justify-content: space-between;
     margin-top: 15px;
     margin-bottom: 5px;
+    margin-bottom: 3%;
 
     button {
       width: 150px;

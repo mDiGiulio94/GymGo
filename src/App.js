@@ -10,11 +10,12 @@ import Login from "./pages/Login";
 import Promozione from "./pages/Promozione";
 import DettagliSeduta from "./pages/DettagliSeduta";
 import Promozioni from "./pages/Promozioni";
-import PromozioneScelta from "./components/PromozioneScelta";
-
+import Registrazione from "./pages/Registrazione";
+import Footer from "./components/Footer";
 
 //Style
 import "./App.scss";
+
 
 
 
@@ -33,12 +34,14 @@ function App() {
           <Route path="/Promozioni" element={<Promozioni />} />
           <Route path="/Account" element={<Servizi />} />
           <Route path="/Login" element={<Login />} />
+          <Route path="/Registrazione" element={<Registrazione />} />
           <Route path="/Informazioni/:nome/:id" element={<DettagliSeduta />} />
           <Route
             path="/PromozioneScelta/:periodo/:id"
             element={<Promozione />}
           />
         </Routes>
+        <Footer />
       </Router>
     </>
   );

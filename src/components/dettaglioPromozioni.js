@@ -106,6 +106,7 @@ const Contenitore = styled.div`
       padding: 3px;
       border-radius: 9px;
       width: 100%;
+      margin-bottom: 3%;
     }
 
     button:hover {
