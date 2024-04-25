@@ -61,10 +61,17 @@ const [valido, setValido] = useState(false)
                     /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$/;
 
                 if (!passwordRegex.test(value)) {
-                    setError((prevErrore) => ({
-                        ...prevErrore,
-                        [name]: "Password non corretta, riprova"
-                    }))
+                  setError((prevErrore) => ({
+                    ...prevErrore,
+                    [name]: [
+                      <ul>
+                        <li>Deve contenere una maiuscola</li>
+                        <li>Deve contenere un carattere speciale</li>
+                        <li>Deve contenere un numero</li>
+                        <li>Deve avere 8 - 16 caratteri</li>
+                      </ul>,
+                    ],
+                  }));
                 } else {
                     setError((prevErrore) => ({
                         ...prevErrore,
@@ -84,7 +91,7 @@ const [valido, setValido] = useState(false)
         evento.preventDefault();
         console.log("campi form", formValues)
     }
-    
+
     //useEffect dei campi non validi
     useEffect(() => {
 
@@ -96,9 +103,9 @@ const [valido, setValido] = useState(false)
             value !== null &&
             value !== false &&
             value !== "false"
-        );
-        
-        setValido(Valid && condizioni)
+      );
+
+      setValido(Valid && condizioni)
     }, [formValues, error])
 
 
@@ -114,7 +121,7 @@ const [valido, setValido] = useState(false)
                 <form onSubmit={onSubmitFo}>
                   <div className="contenitore">
                     {/* campo email */}
-                    <label className="label" htmlFor="email">
+                    <label className="label" htmlFor="email1">
                       Inserisci email:
                     </label>
                     <input
@@ -131,7 +138,7 @@ const [valido, setValido] = useState(false)
                     </div>
 
                      {/* campo password */}
-                    <label className="label" htmlFor="email">
+                    <label className="label" htmlFor="email2">
                       Inserisci la password:
                     </label>
                     <Input.Password
@@ -168,7 +175,7 @@ const [valido, setValido] = useState(false)
               </Card.Text>
             </Card.Body>
           </Card>
-          ;
+          <div className="nota"><p>Non hai un account? <Link to ="/Registrazione">clicca qui!</Link></p></div>
         </Container>
       </>
     );
@@ -226,7 +233,6 @@ const Container = styled.div`
     justify-content: center;
     margin-top: 3%;
 
-
     .conferma {
       background-color: rgb(187 187 135);
       border-color: rgb(187 187 135);
@@ -247,7 +253,18 @@ const Container = styled.div`
     margin-bottom: -15px;
   }
 
+  .nota {
+    display: flex;
+    justify-content: center;
+    margin-right: 6%;
+    margin-top: 1%;
+  }
 
+  .help {
+    font-size: 13px;
+    margin-top: 1%;
+    color: #5a0001;
+  }
 `;
 
 

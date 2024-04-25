@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Space, DatePicker, Input } from "antd";
+import { DatePicker, Input } from "antd";
 import { Link } from "react-router-dom";
 
-
 /*
-1) se può rispiegarmi prevError da dove esce fuori, se è un'incognita X che scegliamo noi o no
-2) perché l'input funziona anche all'altezza del label
-3) perché se provo ad usare Input.Password mi appare uno span di antd ma l'input password rimane all'interno
-4) se provo ad usare il datePicker mi dice che event.target.name è undefined per quella proprietà, nonostante il nome ci sia, come se non accedesse
+CHIEDRE A DANILO
+
+1) se clicco sul label prende anche input // SOLUZIONE // pare che htmlFor e id se hanno lo stesso nome si associano
+
+2) se provo ad usare un input o un datapicker mi mostra un secondo riquadro e non capisco perché // SOLUZIONE // se lasciavo il css dentro il contenitore dati si sovrapponevano gli style CSS
+
+3) ho cambiato il formato di datapicker ma mi lancia un nuovo errore dicendo che non può leggere le proprietà di null alla riga  60, l'errore si attiva solo se cancello una data dopo che l'ho inserita
+
+4)Non mi lancia più il messaggio di campo vuoto su datapicker
 */
 
-// const dateFormatList = ["DD/MM/YYYY"];
-
+const dateFormatList = ["DD/MM/YYYY"];
 
 const Registrazione = () => {
   //use state con oggetto i value di default dei parametri
@@ -35,6 +38,7 @@ const Registrazione = () => {
   //variabile di stato per il set della validazione form
   const [valido, setValido] = useState(false);
 
+
   // gestione cambiamento valore del form
   const handleOnChange = (evento) => {
     setFormValues({
@@ -55,6 +59,10 @@ const Registrazione = () => {
     ) {
       passwordValide();
     }
+  };
+
+  const handleOnChangeData = (event) => {
+    setFormValues({ ...formValues, data: event.$d });
   };
 
   //gestione degli errori
@@ -188,14 +196,14 @@ const Registrazione = () => {
             {/* div dati anagrafici inizio */}
 
             <div className="Dati">
-              <label className="label" htmlFor="nome">
+              <label className="label" htmlFor="nome1">
                 Inserisci il tuo nome :
               </label>
-              <input
+              <Input
                 type="text"
                 name="nome"
                 id="nome"
-                className={`control ${error.name ? "is-valid" : ""}`}
+                className={`control ${error.nome ? "errore" : ""}`}
                 value={formValues.nome}
                 onChange={handleOnChange}
                 onBlur={validazioneCampi}
@@ -204,15 +212,15 @@ const Registrazione = () => {
                 {error.nome && <p className="help ">{error.nome}</p>}
               </div>
 
-              <label className="label" htmlFor="cognome">
+              <label className="label" htmlFor="cognome1">
                 Inserisci il tuo cognome :
               </label>
 
-              <input
+              <Input
                 type="text"
                 name="cognome"
                 id="cognome"
-                className={`control ${error.cognome ? "is-valid" : ""}`}
+                className={`control ${error.cognome ? "errore" : ""}`}
                 value={formValues.cognome}
                 onChange={handleOnChange}
                 onBlur={validazioneCampi}
@@ -220,33 +228,34 @@ const Registrazione = () => {
               <div className="prova">
                 {error.cognome && <p className="help ">{error.cognome}</p>}
               </div>
-              <label className="label" htmlFor="data">
+
+              <label className="label" htmlFor="data1">
                 Inserisci la data di nascita :
               </label>
-              <Space direction="vertical">
-                <input
+              
+                <DatePicker format={dateFormatList}
                   type="date"
                   id="data"
                   name="data"
-                  className={`control ${error.data ? "is-valid" : ""}`}
-                  value={formValues.data}
-                  onChange={handleOnChange}
-                  onBlur={validazioneCampi}
+                  className={`control ${error.data ? "errore" : ""}`}
+                  onChange={handleOnChangeData}
                 />
-              </Space>
+              
+
               {/* fine anagrafici ----- inizio contatti */}
+
               <div className="prova">
                 {error.data && <p className="help ">{error.data}</p>}
               </div>
-              <label className="label" htmlFor="email">
+              <label className="label" htmlFor="email1">
                 Inserisci la tua mail :
               </label>
 
-              <input
+              <Input
                 type="email"
                 name="email"
                 id="email"
-                className={`control ${error.email ? "is-valid" : ""}`}
+                className={`control ${error.email ? "errore" : ""}`}
                 value={formValues.email}
                 onChange={handleOnChange}
                 onBlur={validazioneCampi}
@@ -254,15 +263,15 @@ const Registrazione = () => {
               <div className="prova">
                 {error.email && <p className="help ">{error.email}</p>}
               </div>
-              <label className="label" htmlFor="telefono">
+              <label className="label" htmlFor="telefono1">
                 Inserisci un telefono fisso :
               </label>
 
-              <input
+              <Input
                 type="text"
                 name="telefono"
                 id="telefono"
-                className={`control ${error.telefono ? "is-valid" : ""}`}
+                className={`control ${error.telefono ? "errore" : ""}`}
                 value={formValues.telefono}
                 onChange={handleOnChange}
                 onBlur={validazioneCampi}
@@ -270,15 +279,15 @@ const Registrazione = () => {
               <div className="prova">
                 {error.telefono && <p className="help ">{error.telefono}</p>}
               </div>
-              <label className="label" htmlFor="cellulare">
+              <label className="label" htmlFor="cellulare1">
                 Inserisci un telefono cellulare :
               </label>
 
-              <input
+              <Input
                 type="text"
                 name="cellulare"
                 id="cellulare"
-                className={`control ${error.cellulare ? "is-valid" : ""}`}
+                className={`control ${error.cellulare ? "errore" : ""}`}
                 value={formValues.cellulare}
                 onChange={handleOnChange}
                 onBlur={validazioneCampi}
@@ -288,15 +297,15 @@ const Registrazione = () => {
               </div>
               {/* fine contatti ---------- inizio password */}
 
-              <label className="label" htmlFor="password">
+              <label className="label" htmlFor="password1">
                 Scegli una Password :
               </label>
 
-              <input
+              <Input.Password
                 type="password"
                 name="password"
                 id="password"
-                className={`control ${error.password ? "is-valid" : ""}`}
+                className={`control ${error.password ? "errore" : ""}`}
                 value={formValues.password}
                 onChange={handleOnChange}
                 onBlur={validazioneCampi}
@@ -304,16 +313,17 @@ const Registrazione = () => {
               <div className="prova">
                 {error.password && <p className="help ">{error.password}</p>}
               </div>
-              <label className="label" htmlFor="confermaPassword">
+
+              <label className="label" htmlFor="confermaPassword1">
                 Conferma la Password :
               </label>
 
-              <input
+              <Input.Password
                 type="password"
                 name="confermaPassword"
                 id="confermaPassword"
                 className={`control ${
-                  error.confermaPassword ? "is-valid" : ""
+                  error.confermaPassword ? "errore" : ""
                 }`}
                 value={formValues.confermaPassword}
                 onChange={handleOnChange}
@@ -335,7 +345,7 @@ const Registrazione = () => {
                   type="checkbox"
                   name="privacy"
                   id="privacy"
-                  className={`control ${error.accetto ? "is-valid" : ""}`}
+                  className={`control ${error.accetto ? "errore" : ""}`}
                   value={formValues.accetto}
                   onChange={handleOnChange}
                 />
@@ -389,48 +399,17 @@ const Contenitore = styled.div`
         display: flex;
         flex-direction: column;
         margin: 3%;
-
-        input {
-          border-radius: 5px;
-          border-width: 1px;
-          border-color: grey;
-          width: 95%;
-          height: 30px;
-          margin-bottom: 3%;
-        }
       }
 
-      input[type="text"]:focus {
-        outline: 3px solid rgb(187 187 135);
+      .ant-picker {
+        border-radius: 5px;
+        border-width: 1px;
+        border-color: grey;
+        width: 95%;
+        height: 40px;
+        margin-bottom: 3%;
+        text-align: center;
       }
-
-      input[type="password"]:focus {
-        outline: 3px solid rgb(187 187 135);
-      }
-
-      input[type="email"]:focus {
-        outline: 3px solid rgb(187 187 135);
-      }
-      input[type="date"]:focus {
-        outline: 3px solid rgb(187 187 135);
-      }
-
-      .label {
-        margin-top: 1%;
-        margin-bottom: 1%;
-      }
-
-      /* .ant-picker {
-          border-radius: 5px;
-          border-width: 1px;
-          border-color: grey;
-          width: 95%;
-          height: 40px;
-          margin-bottom: 3%;
-        }
-        .ant-picker:focus {
-          outline: 3px solid rgb(187 187 135) !important;
-        } */
 
       .bottone {
         display: flex;
@@ -444,7 +423,8 @@ const Contenitore = styled.div`
         background-color: rgb(187 187 135);
         color: rgb(33 37 41);
         height: 100%;
-        width: 80%
+        width: 80%;
+        border: rgb(187 187 135);
       }
 
       .invia:hover {
@@ -464,7 +444,7 @@ const Contenitore = styled.div`
   .prova {
     height: 15px;
     margin-bottom: 3%;
-    margin-top: -5px;
+    margin-top: 1%;
   }
 
   .termini {
@@ -474,18 +454,21 @@ const Contenitore = styled.div`
     margin-top: 2%;
 
     #privacy {
-      width: 10%;
+      width: 8%;
       text-align: center;
-      margin-top: 3%;
       font-size: 15px;
       height: 15px;
     }
   }
 
+  .label {
+    margin-top: 1%;
+    margin-bottom: 1%;
+  }
+
+  .errore {
+    border-color: red;
+  }
 `;
 
-
-
 export default Registrazione;
-
-
